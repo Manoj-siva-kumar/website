@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Store</title>
+    <style>
+  
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background-color: #0078d7;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        .product {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: white;
+            padding: 15px;
+            margin: 15px;
+            width: 300px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h2 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #0078d7;
+        }
+
+        .product p {
+            margin: 5px 0;
+        }
+
+        .product button {
+            background-color: #0078d7;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        .product button:hover {
+            background-color: #005bb5;
+        }
+
+        .products {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            margin-top: 20px;
+        }
+        .product img{
+            height:250px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Amazon</h1>
+        <p>Shop your favorite shirts!</p>
+    </header>
+
+    <div class="container">
+        <div class="products">
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/330936512/YO/DE/LH/3163416/whatsapp-image-2023-08-01-at-12-53-33-500x500.jpeg" alt="Shirt 1">
+                <h2>Shirt 1</h2>
+                <p>Price: $20</p>
+                <button onclick="addToCart('Shirt 1', 20)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://5.imimg.com/data5/BH/YL/MY-49906296/lycra-fabric.jpg" alt="Shirt 2">
+                <h2>Shirt 2</h2>
+                <p>Price: $25</p>
+                <button onclick="addToCart('Shirt 2', 25)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/4/297159311/BQ/SF/JO/9173800/whatsapp-image-2023-03-29-at-17-56-34-1--500x500.jpeg" alt="Shirt 3">
+                <h2>Shirt 3</h2>
+                <p>Price: $18</p>
+                <button onclick="addToCart('Shirt 3', 18)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://5.imimg.com/data5/SELLER/Default/2023/8/330936512/YO/DE/LH/3163416/whatsapp-image-2023-08-01-at-12-53-33-500x500.jpeg" alt="Shirt 4">
+                <h2>Shirt 4</h2>
+                <p>Price: $22</p>
+                <button onclick="addToCart('Shirt 4', 22)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://5.imimg.com/data5/ANDROID/Default/2022/2/BN/OX/UP/96329054/product-jpeg-500x500.jpg" alt="Shirt 5">
+                <h2>Shirt 5</h2>
+                <p>Price: $30</p>
+                <button onclick="addToCart('Shirt 5', 30)">Add to Cart</button>
+            </div>
+
+            <div class="product">
+                <img src="https://www.clickindia.com/images/2019/07/05/59/163158032_15665545949_large.jpg" alt="Shirt 6">
+                <h2>Shirt 6</h2>
+                <p>Price: $35</p>
+                <button onclick="addToCart('Shirt 6', 35)">Add to Cart</button>
+            </div>
+
+            
+            <div class="product">
+                <img src="https://www.teez.in/cdn/shop/files/I_mNotSelf-IsolatingIJustDon_tLikePeople.MenFullSleeveT-shirt_1_large.jpg?v=1704786387" alt="Shirt 10">
+                <h2>Shirt 10</h2>
+                <p>Price: $32</p>
+                <button onclick="addToCart('Shirt 10', 32)">Add to Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Online Store | All Rights Reserved</p>
+    </footer>
+
+    <script>
+        let cart = [];
+
+        function addToCart(productName, price) {
+            cart.push({ name: productName, price: price });
+            alert(`${productName} has been added to your cart.`);
+        }
+
+        function checkout() {
+            if (cart.length === 0) {
+                alert("Your cart is empty!");
+                return;
+            }
+
+            let total = cart.reduce((sum, item) => sum + item.price, 0);
+            alert(`Total: $${total}. Proceed to payment.`);
+            // Payment integration (e.g., Stripe, PayPal) can be added here.
+        }
+
+        // Add a Checkout Button Dynamically
+        document.body.insertAdjacentHTML(
+            'beforeend',
+            `<div style="text-align: center; margin-top: 20px;">
+                <button onclick="checkout()" style="
+                    background-color: #0078d7; 
+                    color: white; 
+                    border: none; 
+                    padding: 10px 20px; 
+                    font-size: 1.2em; 
+                    border-radius: 5px; 
+                    cursor: pointer;">
+                    Checkout
+                </button>
+            </div>`
+        );
+    </script>
+</body>
+</html>
